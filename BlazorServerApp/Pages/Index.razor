@@ -1,11 +1,53 @@
 ﻿@page "/"
 
-<h3>Hello, @GetUserName() ... Wellcome to our <b>Application</b></h3>
-
-@code {
-    private string userName = "John";
-    private string GetUserName()
-    {
-        return userName + " Thomas";
-    }
+<h3>Hello, @userName ... Wellcome to our <b>Application</b></h3>
+<p>Sum: @(2 + 2)</p>
+<button @onclick="ChangeName">Change Name</button>
+@if(testNum == 1)
+{
+        <p>Num is 1</p>
+}else
+{
+        <p>Num is not 1</p>
 }
+@for(int i = 0; i< 10; i++)
+{
+        <p>Value of i: @i</p>
+}
+@foreach(var name in names)
+{
+        <p>@name</p>
+}
+@code
+{
+        private string userName = "John";
+        private int testNum = 1;
+        private List<string> names;
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            names = new List<string>
+                {
+            "Value 01",
+            "Value 02",
+            "Value 03",
+            "Value 04",
+            "Value 05",
+            "Value 06",
+            "Value 07"
+                };
+        }
+        private string GetUserName()
+        {
+            return userName + " Thomas";
+        }
+
+        private void ChangeName()
+        {
+            userName = "Peter";
+        }
+        private int GetSum()
+        {
+            return 2 + 2;
+        }
+    }
