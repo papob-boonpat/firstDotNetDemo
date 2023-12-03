@@ -1,0 +1,11 @@
+﻿@page "/"
+
+<h3>Hello, @GetUserName() ... Wellcome to our <b>Application</b></h3>
+
+@code {
+    private string userName = "John";
+    private string GetUserName()
+    {
+        return userName + " Thomas";
+    }
+}
